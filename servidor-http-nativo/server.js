@@ -11,8 +11,8 @@ const requisicao = (req, res) => {
     const urlObj = new URL(req.url, `http://${req.headers.host}`);
 
     if (req.method === 'GET' && urlObj.pathname === '/saudacao') {
-        const nome = urlObj.searchParams.get('nome');
-        return res.end(JSON.stringify({"nome": nome}));
+        const nome = urlObj.searchParams.get('nome')
+    return res.end(JSON.stringify({"nome": nome}));
     } else if (req.method === 'GET' && urlObj.pathname === '/') {
         return res.end(JSON.stringify({"data": "Você está na página inicial!"}));
     } else if (req.method === 'GET' && urlObj.pathname === '/contato') {
@@ -21,9 +21,10 @@ const requisicao = (req, res) => {
         return res.end(JSON.stringify(
             {"data":
               [{"título": "Bare Vanilla", "preço": 160.99 },{"título": "Velvet Petals", "preço": 350.00 }, {"título": "Love Spell", "preço": 199.19 } ]}));
+    }  else if (req.method === 'GET' && urlObj.pathname === '/status') {
+        return res.end(JSON.stringify({"data": "Você está na página inicial!"}));
     }
-
-    return res.end(JSON.stringify({ "chave": "valor" }));
+    return res.end(JSON.stringify({ "chave": 404 }));
 
 
     console.log(`Requisição recebida! ${req.method} ${req.url}`);
